@@ -5,8 +5,8 @@ import pickle
 import mlflow
 import os
 
-os.environ['AWS_ACCESS_KEY_ID'] = "AKIA3R62MVALHESATEYJ"
-os.environ['AWS_SECRET_ACCESS_KEY'] = "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"
+aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 mlflow.set_tracking_uri("https://isen-mlflow-fae8e0578f2f.herokuapp.com/")
 

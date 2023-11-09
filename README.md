@@ -12,3 +12,7 @@
 ### Docker
 
 - L'image du training est présente <a href="https://hub.docker.com/r/basileguerin/lstmtraining" target="_blank">ici</a>
+
+### Azure App Service
+
+- L'application est déployée sur Azure et disponible via ce [lien](https://basilelstmforecasting.azurewebsites.net/)
