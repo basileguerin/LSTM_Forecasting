@@ -20,6 +20,7 @@ look_back = 14
 values = df.tail(look_back).values
 x_input = scaler.transform(values).reshape((1, 14, 1))
 
+st.set_page_config(page_title='LSTM Forecasting', page_icon="chart_with_upwards_trend", layout='wide')
 st.title('Forecasting with LSTM Model')
 
 period_to_visualize = st.selectbox('Select the period to visualize:', ['Entire Time Series', 'Last Month', 'Last Year'])
