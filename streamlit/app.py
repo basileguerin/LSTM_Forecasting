@@ -13,8 +13,8 @@ mlflow.set_tracking_uri("https://isen-mlflow-fae8e0578f2f.herokuapp.com/")
 logged_model = 'runs:/90283baf70024e14afbc33cb57b7d4a9/LSTM_model'
 model = mlflow.tensorflow.load_model(logged_model)
 
-df = pd.read_csv('../training/data.csv', index_col=0)
-scaler = pickle.load(open('../training/scaler.pkl', 'rb'))
+df = pd.read_csv('./data.csv', index_col=0)
+scaler = pickle.load(open('./scaler.pkl', 'rb'))
 
 look_back = 14
 values = df.tail(look_back).values
@@ -43,6 +43,7 @@ if st.button('Predict the next 7 days'):
         x_input = np.append(x_input[0], y_pred)
         x_input = x_input[-look_back:]
         x_input = x_input.reshape((1, look_back, 1))
-    result_dict = {f'J+{i+1}': predictions[i] for i in range(7)}
+
+    result_dict = {(pd.to_datetime(df.index[-1]) + pd.DateOffset(days=i+1)).strftime('%Y-%m-%d'): predictions[i] for i in range(7)}
     st.subheader('Model predictions :')
     st.json(result_dict)
